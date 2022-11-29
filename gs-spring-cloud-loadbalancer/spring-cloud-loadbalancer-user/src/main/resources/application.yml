@@ -1,0 +1,28 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: user
+  cloud:
+    loadbalancer:
+      hint:
+        say-hello: hello
+    discovery:
+      client:
+        simple:
+          # order: # specify the discovery client order
+          instances:
+            new-hello:
+              - uri: http://localhost:10001
+              - uri: http://localhost:10002
+#            old-hello:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    beans:
+      enabled: true
